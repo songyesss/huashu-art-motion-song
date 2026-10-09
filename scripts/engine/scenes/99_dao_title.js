@@ -37,13 +37,13 @@ SCENES['99_dao_title'] = (() => {
   }
 
   function titleGlyph(g) {
-    g.save(); g.font = '150px "NanumBrushScript-400"'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.save(); g.font = '150px "PermanentMarker-400"'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
     g.fillStyle = '#14120f';
     g.fillText('Dao of All Things', W / 2, 780);
     g.restore();
   }
   function subGlyph(g) {
-    g.save(); g.font = '64px "NanumBrushScript-400"'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.save(); g.font = '64px "PermanentMarker-400"'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
     g.fillStyle = '#3a342c';
     g.fillText('Read the old text. Keep what works.', W / 2, 850);
     g.restore();
