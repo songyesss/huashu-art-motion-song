@@ -36,8 +36,11 @@ window.FONT_FACES = [
   {family:'LibreBaskerville-700', url:'lib/fonts/LibreBaskerville-700.woff'},
   // 中文：霞鹜文楷 Medium 子集（OFL 1.1）。GB2312 全部汉字＋预置字＋skill 里用到的字（font_subset.py --gb2312），生僻字用 scripts/font_subset.py --text 补；NotoSerifJP 是日文子集，简体字不全（「戏」「蓝」都没有）
   {family:'LXGWWenKai-500', url:'lib/fonts/LXGWWenKai-500.woff'},
-  // 毛笔感英文（OFL）：韩国书法家设计，字形本身粗细不均、带飞白，比用西文衬线字体硬套"水墨风"更贴。Dao of All Things 项目追加，ASCII 子集（font_subset.py --text）
-  {family:'NanumBrushScript-400', url:'lib/fonts/NanumBrushScript-400.woff'},
+  // 中文毛笔行书（OFL）：5款候选对比后用户选定，目前只含"道""宋"两字（Google 动态子集直出），
+  // 要给别的汉字用先拿 scripts/font_subset.py --text 补子集，不要直接把这份当全字库用
+  {family:'ZhiMangXing-400', url:'lib/fonts/ZhiMangXing-400.ttf'},
+  // 粗体马克笔英文（OFL）：8款候选对比后用户选定（Dao of All Things 项目，纯 Latin 字体零中文覆盖，中文仍用上面的霞鹜文楷），ASCII 子集（font_subset.py --text）
+  {family:'PermanentMarker-400', url:'lib/fonts/PermanentMarker-400.woff'},
   // ---- YouTube 解说语法（references/09）----
   // 中文黑体：family 名沿用 PuHui-*（代码里 97 处引用不用改），开源版文件是思源黑体 Noto Sans SC（OFL 1.1）500/700/800/900 四个字重的 GB2312 子集
   // （scripts/font_subset.py --gb2312，单字重约 1.4MB）。作者原用阿里巴巴普惠体 3.0，其许可不允许转换、拆分后再分发，所以不随仓库附带；

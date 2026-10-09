@@ -1,10 +1,13 @@
 // Dao of All Things · 片头/收尾文字卡 —— 纯代码，无卡通人物。
 // 管线：①宣纸（缓存）→ ②"道"字：fillText 保证字形100%正确 → 走 P.inkWash 晕染成墨色
-//      → ③英文标题+副标题：换成 NanumBrushScript（真毛笔字形，粗细不均、带飞白），同样走 P.inkWash → ④钤印"宋"
+//      → ③英文标题+副标题：PermanentMarker（粗体马克笔字形，8款候选对比后用户选定），同样走 P.inkWash → ④钤印"宋"：志莽行书
 // 字形用 fillText 不用手描笔画路径：手描复杂汉字笔画风险高（容易描走样），
 // fillText 保证字绝对正确，再用 P.inkWash 做墨晕+multiply，照样是"画出来"的质感，不是贴图字幕。
-// 英文标题最初用清爽字体(LXGWWenKai)排版，用户反馈"不好看，要毛笔写意感，像封面图文字那样"——
-// 换成真正的毛笔字形字体(NanumBrushScript，OFL，已 subset 成 ASCII)，同样套 inkWash，而不是加粗/加描边硬装毛笔感。
+// 字体选型过程：
+//  - 英文：LXGWWenKai(太工整) → NanumBrushScript(有毛笔感，但用户想多看几个选项) →
+//    8款候选对比表（98_font_compare.js，已删），用户选定 PermanentMarker（纯 Latin，零中文覆盖）。
+//  - 中文（"道""宋"）：原来沿用 LXGWWenKai，用户反馈也要毛笔感 → 5款候选对比表（97_zhfont_compare.js，已删：
+//    马善政楷书/志莽行书/刘建毛草/龙藏体），用户选定志莽行书(ZhiMangXing，行书，比楷书更飘逸但仍可辨认)。
 // 注：引擎不会调用场景自带的 label(c,lt)（engine.js 的 drawEra 只调用 e.draw，标题全部并进 draw 里）。
 SCENES['99_dao_title'] = (() => {
   const W = 1920, H = 1080, { clamp, lerp, rng, ease, ss } = U, P = PAINT;
@@ -27,7 +30,7 @@ SCENES['99_dao_title'] = (() => {
   const washLayer = (c, key, grow, fn, o) => P.inkWash(c, 'dao_' + key, grow, fn, o);
 
   function daoGlyph(g) {
-    g.save(); g.font = '440px "LXGWWenKai-500"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.save(); g.font = '440px "ZhiMangXing-400"'; g.textAlign = 'center'; g.textBaseline = 'middle';
     g.fillStyle = '#14120f';
     g.fillText('道', W / 2, 410);
     g.restore();
@@ -78,7 +81,7 @@ SCENES['99_dao_title'] = (() => {
           g.translate(40, 40);
           g.fillStyle = '#c4281e'; g.fillRect(-34, -34, 68, 68);
           g.globalCompositeOperation = 'destination-out';
-          g.font = '40px "LXGWWenKai-500"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+          g.font = '44px "ZhiMangXing-400"'; g.textAlign = 'center'; g.textBaseline = 'middle';
           g.fillText('宋', 0, 1);
           const r = rng(13); for (let i = 0; i < 40; i++) g.fillRect(-34 + r() * 68, -34 + r() * 68, 1 + r() * 3, 1 + r() * 2);
         });
